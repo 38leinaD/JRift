@@ -50,7 +50,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;JRIFTLIBRARY_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\daniel.platz\Dropbox\Dev\Java\Research\JRift\JRiftLibrary\LibOVR\Include;C:\Program Files %28x86%29\Java\jdk1.6.0_31\include\win32;C:\Program Files %28x86%29\Java\jdk1.6.0_31\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\daniel.platz\Dropbox\Dev\Java\Research\JRift\JRiftLibrary\LibOVR\Src;C:\Users\daniel.platz\Dropbox\Dev\Java\Research\JRift\JRiftLibrary\LibOVR\Include;C:\Program Files %28x86%29\Java\jdk1.6.0_31\include\win32;C:\Program Files %28x86%29\Java\jdk1.6.0_31\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

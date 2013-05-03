@@ -1,5 +1,6 @@
 #include "de_fruitfly_ovr_OculusRift.h"
 #include "OVR.h"	
+#include "Util/Util_Render_Stereo.h"
 
 #include <cstring>
 #include <iostream>
@@ -16,14 +17,6 @@ bool			InfoLoaded;
 bool			Initialized = false;
 Quatf quaternion;
 float yaw, pitch, roll;
-
-/*
-JNIEXPORT void JNICALL Java_de_fruitfly_ovr_OculusRift_callnative(JNIEnv *env, jobject jobject) {
-	jclass jclazz = env->GetObjectClass(jobject);
-	jmethodID mid = env->GetMethodID(jclazz, "myJavaMethod", "()V");
-	env->CallVoidMethod(jobject, mid);
-	printf("HELLO WORLD");
-}*/
 
 JNIEXPORT jboolean JNICALL Java_de_fruitfly_ovr_OculusRift_initSubsystem(JNIEnv *env, jobject jobj) {
 	System::Init();

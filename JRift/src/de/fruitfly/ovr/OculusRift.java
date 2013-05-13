@@ -5,7 +5,7 @@ public class OculusRift implements IOculusRift {
 	
 	private boolean initialized = false;
 
-    public final String VERSION = "1.1";
+    public final String VERSION = "1.11";
 	
 	private HMDInfo hmdInfo = new HMDInfo();
 
@@ -27,8 +27,6 @@ public class OculusRift implements IOculusRift {
     public float testPitchAngleDelta = 0.0f;
     public float testRollAngleDelta = 0.0f;
     public float testYawAngleDelta = 0.0f;
-
-    public boolean directionPos = true;
 
     public String _initSummary = "Not initialised";
 
@@ -91,10 +89,10 @@ public class OculusRift implements IOculusRift {
             hmdInfo.DistortionK[1] = _getDistortionK1();
             hmdInfo.DistortionK[2] = _getDistortionK2();
             hmdInfo.DistortionK[3] = _getDistortionK3();
-           // hmdInfo.ChromaticAb[0] = _getChromaticAb0();    // TODO: Get chromatic aberration values
-           // hmdInfo.ChromaticAb[1] = _getChromaticAb1();
-           // hmdInfo.ChromaticAb[2] = _getChromaticAb2();
-           // hmdInfo.ChromaticAb[3] = _getChromaticAb3();
+            hmdInfo.ChromaticAb[0] = _getChromaAbCorrection0();
+            hmdInfo.ChromaticAb[1] = _getChromaAbCorrection1();
+            hmdInfo.ChromaticAb[2] = _getChromaAbCorrection2();
+            hmdInfo.ChromaticAb[3] = _getChromaAbCorrection3();
 
             _initSummary = "OK";
         }
@@ -198,19 +196,6 @@ public class OculusRift implements IOculusRift {
         }
         else
         {
-//            if (directionPos)
-//            {
-//                testRollAngle+= 0.01f;
-//                if (testRollAngle >= 89)
-//                    directionPos = !directionPos;
-//            }
-//            else
-//            {
-//                testRollAngle-= 0.01f;
-//                if (testRollAngle <= -89)
-//                    directionPos = !directionPos;
-//            }
-
             return testRollAngle;
         }
 	}
@@ -262,6 +247,10 @@ public class OculusRift implements IOculusRift {
 	private native float _getDistortionK1();
 	private native float _getDistortionK2();
 	private native float _getDistortionK3();
+    private native float _getChromaAbCorrection0();
+    private native float _getChromaAbCorrection1();
+    private native float _getChromaAbCorrection2();
+    private native float _getChromaAbCorrection3();
 	
 	private native float _getYaw();
 	private native float _getPitch();

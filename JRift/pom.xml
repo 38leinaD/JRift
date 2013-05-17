@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>de.fruitfly.ovr</groupId>
+  <artifactId>ovr</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>JRift</name>
+  <description>Java Wrapper (JNI) for the Oculus Rift HMD and Sensors under Windows.</description>
+  <url>https://github.com/38leinaD/JRift</url>
+
+  <build>
+  	<sourceDirectory>${project.basedir}/src</sourceDirectory>
+
+	<plugins>
+	  <plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-compiler-plugin</artifactId>
+	    <configuration>
+	      <source>1.6</source>
+	      <target>1.6</target>
+	    </configuration>
+	  </plugin>
+	
+	  <plugin>
+	    <groupId>org.codehaus.mojo</groupId>
+	    <artifactId>exec-maven-plugin</artifactId>
+		<configuration>
+          <executable>java</executable>
+          <arguments>
+            <argument>-Djava.library.path=../JRiftLibrary/JRiftLibrary</argument>
+			<argument>-classpath</argument>
+		    <classpath/>
+		    <argument>de.fruitfly.ovr.OculusRift</argument>
+		  </arguments>
+		</configuration>
+	  </plugin>
+	</plugins>
+  </build>
+
+</project>

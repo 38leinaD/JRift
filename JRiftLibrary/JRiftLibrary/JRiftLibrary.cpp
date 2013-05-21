@@ -265,10 +265,8 @@ JNIEXPORT jobject JNICALL Java_de_fruitfly_ovr_OculusRift__1getEyeRenderParams(
 	{
 		stereo.SetHMDInfo(Info);
 	}
-	else
-	{
-		stereo.SetIPD(_ipd);
-	}
+
+	stereo.SetIPD(_ipd); // Set IPD manually
 	stereo.SetEyeToScreenDistanceScaleFactor(eyeToScreenDistanceScaleFactor); // FOV adjustment
 	stereo.SetStereoMode(Util::Render::Stereo_LeftRight_Multipass);
 	stereo.SetFullViewport(viewPort);

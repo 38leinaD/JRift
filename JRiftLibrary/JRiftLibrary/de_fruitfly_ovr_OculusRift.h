@@ -212,7 +212,11 @@ JNIEXPORT jobject JNICALL Java_de_fruitfly_ovr_OculusRift__1getEyeRenderParams(
    jint viewportWidth,
    jint viewportHeight,
    jfloat clipNear,
-   jfloat clipFar);
+   jfloat clipFar,
+   jfloat eyeToScreenDistanceScaleFactor,
+   jfloat distortionFitX,
+   jfloat distortionFitY
+   );
 
 #ifdef __cplusplus
 }

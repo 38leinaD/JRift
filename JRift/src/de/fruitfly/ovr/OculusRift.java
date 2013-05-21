@@ -5,7 +5,7 @@ public class OculusRift implements IOculusRift {
 	
 	private boolean initialized = false;
 
-    public final String VERSION = "1.11";
+    public final String VERSION = "1.12";
 	
 	private HMDInfo hmdInfo = new HMDInfo();
 
@@ -226,7 +226,31 @@ public class OculusRift implements IOculusRift {
 
     public EyeRenderParams getEyeRenderParams(int viewPortX, int viewPortY, int viewPortWidth, int viewPortHeight, float clipNear, float clipFar)
     {
-        return _getEyeRenderParams(viewPortX, viewPortY, viewPortWidth, viewPortHeight, clipNear, clipFar);
+        return getEyeRenderParams(viewPortX, viewPortY, viewPortWidth, viewPortHeight, clipNear, clipFar, 1.0f);
+    }
+
+    public EyeRenderParams getEyeRenderParams(int viewPortX,
+                                              int viewPortY,
+                                              int viewPortWidth,
+                                              int viewPortHeight,
+                                              float clipNear,
+                                              float clipFar,
+                                              float eyeToScreenDistanceScaleFactor)
+    {
+        return getEyeRenderParams(viewPortX, viewPortY, viewPortWidth, viewPortHeight, clipNear, clipFar, eyeToScreenDistanceScaleFactor, -1.0f, 0.0f);
+    }
+
+    public EyeRenderParams getEyeRenderParams(int viewPortX,
+                                              int viewPortY,
+                                              int viewPortWidth,
+                                              int viewPortHeight,
+                                              float clipNear,
+                                              float clipFar,
+                                              float eyeToScreenDistanceScaleFactor,
+                                              float distortionFitX,
+                                              float distortionFitY)
+    {
+        return _getEyeRenderParams(viewPortX, viewPortY, viewPortWidth, viewPortHeight, clipNear, clipFar, eyeToScreenDistanceScaleFactor, distortionFitX, distortionFitY);
     }
 
 	private native boolean initSubsystem();
@@ -261,7 +285,10 @@ public class OculusRift implements IOculusRift {
                                                        int currentViewportWidth,
                                                        int currentViewportHeight,
                                                        float clipNear,
-                                                       float clipFar);
+                                                       float clipFar,
+                                                       float eyeToScreenDistanceScaleFactor,
+                                                       float distortionFitX,
+                                                       float distortionFitY);
 	
 	static {
         String dataModel = System.getProperty("sun.arch.data.model");

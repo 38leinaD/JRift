@@ -206,7 +206,7 @@ void StereoConfig::updateComputedState()
     else
     {
         float percievedHalfRTDistance = (HMD.VScreenSize / 2) * Distortion.Scale;    
-        YFov = 2.0f * atan(percievedHalfRTDistance/HMD.EyeToScreenDistance);
+		YFov = 2.0f * atan(percievedHalfRTDistance/(HMD.EyeToScreenDistance * HMD.EyeToScreenDistanceScaleFactor));
     }
     
     updateProjectionOffset();

@@ -303,7 +303,9 @@ public:
     // Distance from the eye to screen surface, in meters.
     // Useful for calculating FOV and projection.
     float     EyeToScreenDistance;
-    // Distance between physical lens centers useful for calculating distortion center.
+	// Scale factor for eye to screen distance
+	float     EyeToScreenDistanceScaleFactor;
+	// Distance between physical lens centers useful for calculating distortion center.
     float     LensSeparationDistance;
     // Configured distance between the user's eye centers, in meters. Defaults to 0.064.
     float     InterpupillaryDistance;
@@ -333,7 +335,7 @@ public:
     HMDInfo()
         : DeviceInfo(Device_HMD),          
           HResolution(0), VResolution(0), HScreenSize(0), VScreenSize(0),
-          VScreenCenter(0), EyeToScreenDistance(0),
+		  VScreenCenter(0), EyeToScreenDistance(0), EyeToScreenDistanceScaleFactor(0),
           LensSeparationDistance(0), InterpupillaryDistance(0),
           DesktopX(0), DesktopY(0), DisplayId(0)
     {
@@ -353,6 +355,7 @@ public:
         VScreenSize             = src.VScreenSize;
         VScreenCenter           = src.VScreenCenter;
         EyeToScreenDistance     = src.EyeToScreenDistance;
+		EyeToScreenDistanceScaleFactor = src.EyeToScreenDistanceScaleFactor;
         LensSeparationDistance  = src.LensSeparationDistance;
         InterpupillaryDistance  = src.InterpupillaryDistance;
         DistortionK[0]          = src.DistortionK[0];

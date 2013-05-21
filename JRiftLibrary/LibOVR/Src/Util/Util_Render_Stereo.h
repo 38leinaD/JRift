@@ -188,6 +188,10 @@ public:
     float       GetEyeToScreenDistance() const  { return HMD.EyeToScreenDistance; }
     void        SetEyeToScreenDistance(float esd) { HMD.EyeToScreenDistance = esd; DirtyFlag = true; }
 
+	// Scale factor for eye to screen distance. Again, adjusts FOV.
+	float       GetEyeToScreenDistanceScaleFactor() const  { return HMD.EyeToScreenDistanceScaleFactor; }
+    void        SetEyeToScreenDistanceScaleFactor(float esdsf) { HMD.EyeToScreenDistanceScaleFactor = esdsf; DirtyFlag = true; }
+
     // Interpupillary distance used for stereo, in meters. Default is 0.064m (64 mm).
     void        SetIPD(float ipd)               { InterpupillaryDistance = ipd; DirtyFlag = true; }
     float       GetIPD() const                  { return InterpupillaryDistance; }

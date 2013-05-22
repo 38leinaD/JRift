@@ -14,4 +14,13 @@ The JRiftLibrary comes with a Visual Studio 2010 solution project so it should b
 * jni.h header include of your installed JDK (include <jdk-dir>/include and <jdk-dir>/win32
 * OVR SDK headers and library references. Get the SDK from [Oculus VR](https://developer.oculusvr.com) and see [this wiki entry](https://developer.oculusvr.com/wiki/Minimal_Oculus_Application) on how to set up the includes and library references properly.
 
+#### Build for Mac OS X
+
 Thanks to krisds, MacOSX is supported as well; need to build native library yourself via Makefile, though.
+
+You need to set OCULUS_SDK environment variable prior to building.
+
+Example:
+```
+export OCULUS_SDK=/Users/<YOU>/Downloads/OculusSDK
+```

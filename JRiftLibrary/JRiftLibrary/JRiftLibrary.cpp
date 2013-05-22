@@ -1,10 +1,21 @@
 #include "de_fruitfly_ovr_OculusRift.h"
 #include "OVR.h"	
-#include "Util/Util_Render_Stereo.h"
+
+// @void256 I had to comment out this include when I tried to compile it with
+// the latest Oculus SDK v0.2.2. Maybe this file existed in older versions of the SDK?
+//
+// it complained with this error otherwise:
+//  JRiftLibrary.cpp:9:37: error: Util/Util_Render_Stereo.h: No such file or directory
+//
+//#include "Util/Util_Render_Stereo.h"
 
 #include <cstring>
 #include <iostream>
+
+// @void256 conio.h does not exist on OS X as far as I know
+#ifndef __APPLE__
 #include <conio.h>
+#endif
 
 using namespace OVR;
 
@@ -40,7 +51,7 @@ JNIEXPORT jboolean JNICALL Java_de_fruitfly_ovr_OculusRift_initSubsystem(JNIEnv 
 		printf(" DisplayDeviceName: %s\n", Info.DisplayDeviceName);
 		printf(" ProductName: %s\n", Info.ProductName);
 		printf(" Manufacturer: %s\n", Info.Manufacturer);
-		printf(" Version: %s\n", Info.Version);
+		printf(" Version: %i\n", Info.Version); // seems to be an int now with 0.2.2
 		printf(" HResolution: %i\n", Info.HResolution);
 		printf(" VResolution: %i\n", Info.VResolution);
 		printf(" HScreenSize: %f\n", Info.HScreenSize);

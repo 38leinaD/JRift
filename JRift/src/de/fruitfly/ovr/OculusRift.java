@@ -18,7 +18,7 @@ public class OculusRift implements IOculusRift {
 		hmdInfo.VResolution = _getVResolution();
 		hmdInfo.HScreenSize = _getHScreenSize();
 		hmdInfo.VScreenSize = _getVScreenSize();
-		hmdInfo.HScreenSize = _getVScreenCenter();
+		hmdInfo.VScreenCenter = _getVScreenCenter();
 		hmdInfo.EyeToScreenDistance =  _getEyeToScreenDistance();
 		hmdInfo.LensSeperationDistance = _getLensSeparationDistance();
 		hmdInfo.InterpupillaryDistance = _getInterpupillaryDistance();

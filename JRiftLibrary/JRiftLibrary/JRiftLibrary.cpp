@@ -13,7 +13,9 @@
 #include <iostream>
 
 // @void256 conio.h does not exist on OS X as far as I know
-#ifndef __APPLE__
+#ifdef __WIN64__
+#include <conio.h>
+#elif __WIN32__
 #include <conio.h>
 #endif
 

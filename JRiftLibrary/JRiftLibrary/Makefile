@@ -28,3 +28,25 @@ libJRiftLibrary.jnilib: JRiftLibrary.o
 	 	${OCULUS_SDK}/LibOVR/Lib/MacOS/Release/libovr.a
 
 endif
+
+ifeq ($(UNAME), Linux)
+
+JRiftLibrary.o:
+	g++ \
+	-fno-rtti \
+	-fPIC \
+	"-I${JAVA_HOME}/include" \
+	"-I${JAVA_HOME}/include/linux" \
+	"-I${OCULUS_SDK}/LibOVR/Include" \
+	-c JRiftLibrary.cpp
+
+libJRiftLibrary.jnilib: JRiftLibrary.o
+	g++ \
+	-fno-rtti \
+	-fPIC \
+	-shared \
+	-lpthread \
+	-o libJRiftLibrary.jnilib \
+	JRiftLibrary.o \
+	${OCULUS_SDK}/LibOVR/Lib/Linux/Release/x86_64/libovr.a
+endif

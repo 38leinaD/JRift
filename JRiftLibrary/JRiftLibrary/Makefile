@@ -1,4 +1,5 @@
 UNAME := $(shell uname)
+ARCH := $(shell uname -m)
 
 all: libJRiftLibrary.jnilib
 
@@ -31,6 +32,10 @@ endif
 
 ifeq ($(UNAME), Linux)
 
+    ifneq ($(ARCH), x86_64)
+        ARCH:=i386
+    endif
+
 JRiftLibrary.o:
 	g++ \
 	-fno-rtti \
@@ -48,5 +53,6 @@ libJRiftLibrary.jnilib: JRiftLibrary.o
 	-lpthread \
 	-o libJRiftLibrary.jnilib \
 	JRiftLibrary.o \
-	${OCULUS_SDK}/LibOVR/Lib/Linux/Release/x86_64/libovr.a
+	${OCULUS_SDK}/LibOVR/Lib/Linux/Release/$(ARCH)/libovr.a
 endif
+

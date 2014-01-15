@@ -24,3 +24,15 @@ Example:
 ```
 export OCULUS_SDK=/Users/<YOU>/Downloads/OculusSDK
 ```
+
+#### Build for Linux x86_64
+
+Linux is now supported; need to build native library yourself via Makefile, too.
+
+You need to set JAVA_HOME and OCULUS_SDK environment variables prior to building.
+
+In Fedora 18:
+```
+export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk.x86_64
+export OCULUS_SDK=/home/<YOU>/Downloads/OculusSDK
+```

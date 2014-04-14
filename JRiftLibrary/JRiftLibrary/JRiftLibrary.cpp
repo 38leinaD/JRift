@@ -24,7 +24,7 @@ using namespace OVR;
 Ptr<DeviceManager>	pManager;
 Ptr<HMDDevice>		pHMD;
 Ptr<SensorDevice>	pSensor;
-SensorFusion		FusionResult;
+SensorFusion*		pFusionResult;
 HMDInfo			Info;
 bool			InfoLoaded;
 bool			Initialized = false;
@@ -41,7 +41,8 @@ JNIEXPORT jboolean JNICALL Java_de_fruitfly_ovr_OculusRift_initSubsystem(JNIEnv 
 		printf("Oculus Rift Device Interface created.\n");
 		InfoLoaded = pHMD->GetDeviceInfo(&Info);
 		pSensor = *pHMD->GetSensor();
-		FusionResult.AttachToSensor(pSensor);
+		pFusionResult = new SensorFusion();
+		pFusionResult->AttachToSensor(pSensor);
 		Initialized = InfoLoaded && pSensor;
 		printf("Oculus Rift Device Interface initialized.\n");
 	}
@@ -75,6 +76,8 @@ JNIEXPORT void JNICALL Java_de_fruitfly_ovr_OculusRift_destroySubsystem(JNIEnv *
 	pSensor.Clear();
 	pManager.Clear();
 
+	delete pFusionResult;
+
 	System::Destroy();
 }
 
@@ -82,7 +85,7 @@ JNIEXPORT void JNICALL Java_de_fruitfly_ovr_OculusRift_pollSubsystem(JNIEnv *, j
 	if (!Initialized) return;
 	if (!pSensor) return;
 
-	quaternion = FusionResult.GetOrientation();
+	quaternion = pFusionResult->GetOrientation();
 	quaternion.GetEulerAngles<Axis_Y, Axis_X, Axis_Z>(&yaw, &pitch, &roll);
 }
 
